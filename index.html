@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Google Drive File Locker</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
             background: #fff;
             color: #000;
             font-family: 'Courier New', monospace;
-            padding: 20px;
+            padding: 10px;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .terminal {
@@ -25,7 +30,20 @@
             background: #fff;
             border: 2px solid #000;
             border-radius: 5px;
-            padding: 20px;
+            padding: 15px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+                font-size: 13px;
+            }
+            
+            .terminal {
+                border: 1px solid #000;
+                padding: 10px;
+            }
         }
         
         .header {
@@ -38,6 +56,7 @@
             color: #000;
             font-size: 24px;
             text-align: center;
+            word-wrap: break-word;
         }
         
         .subtitle {
@@ -59,6 +78,7 @@
             font-size: 18px;
             margin-bottom: 10px;
             text-decoration: underline;
+            word-wrap: break-word;
         }
         
         button {
@@ -71,6 +91,8 @@
             cursor: pointer;
             margin: 5px;
             transition: all 0.3s;
+            min-height: 44px;
+            touch-action: manipulation;
         }
         
         button:hover {
@@ -78,11 +100,44 @@
             color: #fff;
         }
         
+        button:active {
+            transform: scale(0.98);
+        }
+        
         button:disabled {
             background: #eee;
             color: #ccc;
             border-color: #ccc;
             cursor: not-allowed;
+        }
+        
+        /* Mobile Button Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 18px;
+                line-height: 1.3;
+            }
+            
+            .subtitle {
+                font-size: 12px;
+            }
+            
+            .section {
+                margin: 15px 0;
+                padding: 10px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+            
+            button {
+                width: 100%;
+                margin: 5px 0;
+                padding: 12px 15px;
+                font-size: 13px;
+                min-height: 48px;
+            }
         }
         
         input[type="text"] {
@@ -110,6 +165,7 @@
             max-height: 400px;
             overflow-y: auto;
             font-size: 13px;
+            word-break: break-word;
         }
         
         .output::-webkit-scrollbar {
@@ -126,6 +182,7 @@
         
         .log-line {
             margin: 3px 0;
+            word-wrap: break-word;
         }
         
         .log-success { color: #000; }
@@ -139,6 +196,25 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 10px;
             margin: 15px 0;
+        }
+        
+        /* Mobile Console & Stats */
+        @media (max-width: 768px) {
+            .output {
+                padding: 10px;
+                font-size: 11px;
+                min-height: 150px;
+                max-height: 300px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            input[type="text"], textarea {
+                font-size: 16px !important;
+            }
         }
         
         .stat-box {
@@ -208,6 +284,8 @@
             transition: all 0.2s;
             display: flex;
             align-items: center;
+            min-height: 44px;
+            word-wrap: break-word;
         }
 
         .folder-item:hover {
@@ -215,14 +293,20 @@
             color: #fff;
             border-color: #000;
         }
+        
+        .folder-item:active {
+            transform: scale(0.98);
+        }
 
         .folder-icon {
             margin-right: 10px;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         .folder-name {
             font-weight: bold;
+            word-break: break-word;
         }
 
         .file-item {
@@ -232,18 +316,19 @@
             background: #fafafa;
             font-size: 13px;
             color: #666;
+            word-wrap: break-word;
         }
 
         .breadcrumb-link {
             color: #000;
             cursor: pointer;
             text-decoration: underline;
+            padding: 2px 5px;
         }
 
         .breadcrumb-link:hover {
             background: #000;
             color: #fff;
-            padding: 2px 5px;
         }
         
         .button-group {
@@ -251,6 +336,41 @@
             flex-wrap: wrap;
             gap: 10px;
             margin: 10px 0;
+        }
+        
+        /* Mobile Folder Browser */
+        @media (max-width: 768px) {
+            .folder-item {
+                padding: 12px 10px;
+                min-height: 48px;
+            }
+            
+            .folder-icon {
+                font-size: 12px;
+            }
+            
+            .folder-name {
+                font-size: 13px;
+            }
+            
+            .file-item {
+                padding: 10px;
+                font-size: 12px;
+            }
+            
+            .breadcrumb-link {
+                padding: 5px 8px;
+                display: inline-block;
+                margin: 2px;
+            }
+            
+            .button-group {
+                gap: 5px;
+            }
+            
+            #folderList {
+                max-height: 250px !important;
+            }
         }
         
         .auth-status {
@@ -332,6 +452,7 @@
             margin-top: 20px;
             opacity: 0;
             animation: fadeIn 0.5s ease-in 1.5s forwards;
+            padding: 0 20px;
         }
         
         .splash-heart {
@@ -339,6 +460,31 @@
             margin-top: 30px;
             opacity: 0;
             animation: heartbeat 1s ease-in-out 2s infinite;
+        }
+        
+        /* Mobile Splash Screen */
+        @media (max-width: 768px) {
+            .splash-from {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            
+            .splash-to {
+                font-size: 32px;
+                letter-spacing: 2px;
+                margin: 15px 0;
+            }
+            
+            .splash-message {
+                font-size: 16px;
+                margin-top: 15px;
+                line-height: 1.4;
+            }
+            
+            .splash-heart {
+                font-size: 24px;
+                margin-top: 20px;
+            }
         }
         
         @keyframes fadeIn {
@@ -381,12 +527,16 @@
         .loading-text {
             font-size: 24px;
             margin-bottom: 20px;
+            padding: 0 20px;
+            text-align: center;
         }
         
         .loading-subtext {
             font-size: 16px;
             color: #ccc;
             margin-top: 10px;
+            padding: 0 20px;
+            text-align: center;
         }
         
         .loading-spinner {
@@ -401,6 +551,23 @@
         @keyframes spin {
             to {
                 transform: rotate(360deg);
+            }
+        }
+        
+        /* Mobile Loading Overlay */
+        @media (max-width: 768px) {
+            .loading-text {
+                font-size: 18px;
+            }
+            
+            .loading-subtext {
+                font-size: 14px;
+            }
+            
+            .loading-spinner {
+                width: 40px;
+                height: 40px;
+                border-width: 4px;
             }
         }
     </style>
