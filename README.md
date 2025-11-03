@@ -1,12 +1,167 @@
-# Simple Google Drive File Locker
+# Google Drive File Locker 🔒
 
-A simple Python script to automatically lock all your Google Drive files to prevent viewers from downloading, copying, or printing them.
+**Live Web App:** https://drive-locker.vercel.app
 
-## What This Does
+A beautiful, easy-to-use web application to lock your Google Drive files and prevent viewers from downloading, copying, or printing them. No installation required - just open the link and start protecting your files!
 
-This script sets the "Disable options to download, print, and copy for commenters and viewers" setting on all your Drive files automatically, so you don't have to do it manually for each file.
+## ✨ Features
 
-## Quick Setup (5 minutes)
+- 🌐 **Web-Based** - No installation, works in any browser
+- 📱 **Mobile Responsive** - Works perfectly on phones, tablets, and desktops
+- 🗂️ **Visual Folder Browser** - Navigate through folders like Windows Explorer
+- 🔒 **Lock & Share** - Lock files and share with specific people in one click
+- 📧 **Email Notifications** - Recipients get notified when folders are shared
+- 💝 **Personalized** - Made with love for Purnendu by Mahesh
+- ⚡ **Fast & Secure** - Direct connection to Google Drive API
+
+## 🚀 Quick Start (Web App)
+
+1. **Open:** https://drive-locker.vercel.app
+2. **Click:** "Connect Google Drive"
+3. **Sign in** with your Google account
+4. **Browse** your folders and lock files!
+
+That's it! No installation, no setup, no configuration needed.
+
+---
+
+## 🎯 How to Use
+
+### Step 1: Connect to Google Drive
+
+1. Open https://drive-locker.vercel.app
+2. Wait for the personalized splash screen ("From Mahesh TO: PURNENDU ♥")
+3. Click **"[+] Connect Google Drive"**
+4. Sign in and grant permissions
+5. You'll see **"[OK] CONNECTED - Ready to lock files"**
+
+### Step 2: Browse Your Folders
+
+1. Click **"[BROWSE] Browse Folders & Lock Files"**
+2. You'll see all your folders in "My Drive"
+3. Click on any folder to open it
+4. Navigate through subfolders by clicking on them
+5. See the breadcrumb trail: `My Drive > College Notes > Semester 1`
+
+### Step 3: Lock Files
+
+**Option A: Lock Without Sharing**
+1. Navigate to the folder you want to lock
+2. Click **"[LOCK] Lock Files Here"**
+3. Choose if you want to include subfolders
+4. Confirm and watch the progress!
+
+**Option B: Lock & Share with People**
+1. Navigate to the folder
+2. Click **"[LOCK & SHARE] Lock & Share with People"**
+3. Enter email addresses (one per line):
+   ```
+   friend1@gmail.com
+   friend2@gmail.com
+   teacher@school.com
+   ```
+4. OR check "Anyone with the link" for public sharing
+5. Click **"[LOCK & SHARE] This Folder Only"** or **"Include Subfolders"**
+6. Done! Recipients get ONE email with folder access
+
+### Step 4: View Progress
+
+Watch the console output in real-time:
+```
+[START] Locking folder: College Notes
+[STEP 1] Locking all files...
+[1/25] [LOCK] COA-Mod-1.pdf
+[1/25] [OK] Locked
+[2/25] [LOCK] Data Structures.pdf
+[2/25] [OK] Locked
+...
+[STEP 2] Sharing folder with recipients...
+[SHARE] Sent email to: friend@gmail.com
+[SHARE] Folder shared successfully!
+[COMPLETE] Locked: 25 | Failed: 0
+```
+
+---
+
+## 📱 Mobile Features
+
+The app is fully optimized for mobile devices:
+
+- ✅ **Touch-friendly buttons** (48px minimum height)
+- ✅ **Responsive layout** adapts to screen size
+- ✅ **No horizontal scrolling** - everything fits perfectly
+- ✅ **Large text** for easy reading
+- ✅ **Tap feedback** - buttons respond to touch
+- ✅ **Mobile keyboard** optimized for email input
+
+Works great on:
+- 📱 iPhone & Android phones
+- 📱 iPads & Android tablets
+- 💻 Laptops & Desktops
+- 🖥️ Large monitors
+
+---
+
+## 🎨 What Makes It Special
+
+### Personalized Experience
+- Beautiful splash screen: "From Mahesh TO: PURNENDU ♥"
+- Custom loading messages: "Mahesh's tool is working hard for Purnendu"
+- Made specifically for Purnendu by his childhood friend Mahesh
+
+### Smart Folder Browser
+- Navigate folders like Windows Explorer
+- See file counts in each folder
+- Breadcrumb navigation to go back easily
+- Shows both folders and files clearly
+
+### Lock & Share Feature
+- Lock files AND share them in one operation
+- Share with specific people via email
+- OR share as "Anyone with the link"
+- Recipients get ONE email (not one per file!)
+- Automatic viewer permissions (can't download)
+
+---
+
+## 🔐 Security & Privacy
+
+- ✅ **Direct connection** to Google Drive API (no middleman)
+- ✅ **No data stored** on our servers
+- ✅ **OAuth 2.0** authentication (industry standard)
+- ✅ **HTTPS only** (secure connection)
+- ✅ **Open source** - you can review the code
+
+### What Gets Locked?
+
+✅ **Prevents:**
+- Downloading files via Drive UI
+- Printing documents
+- Copying/pasting content
+- Downloading from Drive mobile app
+
+❌ **Cannot Prevent:**
+- Screenshots or photos of screen
+- Owner/editor downloads (they always can)
+- Files already downloaded before locking
+
+---
+
+## 📊 Statistics
+
+Click **"[STATS] Show Statistics"** to see:
+- Total files in your Drive
+- How many are locked
+- How many are unlocked
+- Lock percentage
+
+---
+
+## 🐍 Python Script (Alternative)
+
+Prefer command line? We also have a Python script version.
+
+### Quick Setup (5 minutes)
 
 ### Step 1: Install Python
 
@@ -246,6 +401,43 @@ Common issues:
 
 ---
 
-**Made for:** Helping your friend automate Drive file locking  
+## 🌟 About This Project
+
+**Made by:** Mahesh  
+**Made for:** Purnendu (childhood friend)  
+**Purpose:** To help Purnendu easily lock and share his college notes  
+**Tech Stack:** HTML, CSS, JavaScript, Google Drive API v3  
+**Hosting:** Vercel (free tier)  
 **Time saved:** Hours of manual clicking!  
-**License:** MIT - Use freely
+
+### Why This Was Built
+
+Purnendu needed an easy way to:
+1. Lock his college notes to prevent unauthorized downloads
+2. Share them with classmates securely
+3. Do it all from his mobile phone
+4. Not worry about technical setup
+
+So Mahesh built this beautiful web app as a gift! ♥
+
+---
+
+## 🔗 Links
+
+- **Live App:** https://drive-locker.vercel.app
+- **GitHub:** https://github.com/gmahesh-star/drive-locker
+- **Issues:** Report bugs or request features on GitHub
+
+---
+
+## 📝 License
+
+MIT License - Use freely, modify as needed, share with friends!
+
+---
+
+## 💖 Special Thanks
+
+To Purnendu - for being an amazing friend and inspiring this project!
+
+**"Made with care for my childhood friend" - Mahesh**
