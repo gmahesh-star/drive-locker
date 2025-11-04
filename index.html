@@ -607,7 +607,7 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-text" id="loadingText">Processing...</div>
         <div class="loading-spinner"></div>
-        <div class="loading-subtext" id="loadingSubtext">Mahesh's tool is working hard for Purnendu</div>
+        <div class="loading-subtext" id="loadingSubtext">R Drive Locker is working...</div>
     </div>
 
     <div class="terminal">
@@ -1004,7 +1004,7 @@
         function showLoading(message, subtext) {
             const overlay = document.getElementById('loadingOverlay');
             document.getElementById('loadingText').textContent = message;
-            document.getElementById('loadingSubtext').textContent = subtext || 'Mahesh\'s tool is working hard for Purnendu';
+            document.getElementById('loadingSubtext').textContent = subtext || 'R Drive Locker is working...';
             overlay.classList.add('active');
         }
 
@@ -1018,7 +1018,7 @@
                 return;
             }
 
-            showLoading('Scanning Drive...', 'Mahesh made this just for you, Purnendu!');
+            showLoading('Scanning Drive...', 'R Drive Locker is scanning your files...');
             log('[START] Starting bulk lock operation...', 'info');
             showProgress();
             resetStats();
@@ -1074,7 +1074,7 @@
                 return;
             }
 
-            showLoading('Scanning Drive...', 'Your friend Mahesh got you covered!');
+            showLoading('Scanning Drive...', 'R Drive Locker is scanning your files...');
             log('[START] Starting bulk unlock operation...', 'info');
             showProgress();
             resetStats();
@@ -1313,7 +1313,7 @@
             hideFolderBrowser();
 
             const recursiveText = includeSubfolders ? ' (including subfolders)' : '';
-            showLoading('Processing...', `Mahesh's tool is locking and sharing for Purnendu`);
+            showLoading('Processing...', `R Drive Locker is locking and sharing...`);
             log(`[START] Lock and share: ${targetFolderName}${recursiveText}`, 'info');
             log(`[INFO] Folder ID: ${targetFolderId}`, 'dim');
             showProgress();
@@ -1385,7 +1385,7 @@
             hideFolderBrowser();
             
             const recursiveText = includeSubfolders ? ' (including subfolders)' : '';
-            showLoading('Scanning Folder...', `Mahesh's tool is locking "${folderName}" for Purnendu`);
+            showLoading('Scanning Folder...', `R Drive Locker is locking "${folderName}"...`);
             log(`[START] Locking folder: ${folderName}${recursiveText}`, 'info');
             showProgress();
             resetStats();
@@ -1442,7 +1442,7 @@
             }
 
             hideFolderInput();
-            showLoading('Scanning Folder...', 'Mahesh\'s special tool for Purnendu');
+            showLoading('Scanning Folder...', 'R Drive Locker is scanning folder...');
             log(`[START] Locking folder: ${folderId}`, 'info');
             showProgress();
             resetStats();
@@ -1490,7 +1490,7 @@
 
         // Show statistics
         async function showStats() {
-            showLoading('Calculating Statistics...', 'Made by Mahesh for his best friend Purnendu');
+            showLoading('Calculating Statistics...', 'R Drive Locker is calculating stats...');
             log('[STATS] Calculating statistics...', 'info');
             const files = await getAllFiles();
             hideLoading();
