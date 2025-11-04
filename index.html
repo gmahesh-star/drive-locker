@@ -317,6 +317,29 @@
             font-size: 13px;
             color: #666;
             word-wrap: break-word;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .file-name {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .lock-icon {
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .lock-icon.locked {
+            color: #000;
+        }
+
+        .lock-icon.unlocked {
+            color: #999;
         }
 
         .breadcrumb-link {
@@ -1153,7 +1176,7 @@
                 const response = await gapi.client.drive.files.list({
                     q: query,
                     pageSize: 1000,
-                    fields: 'files(id, name, mimeType)',
+                    fields: 'files(id, name, mimeType, copyRequiresWriterPermission)',
                     orderBy: 'name'
                 });
 
@@ -1182,15 +1205,24 @@
 
                 // Show files
                 if (files.length > 0) {
+                    const lockedCount = files.filter(f => f.copyRequiresWriterPermission).length;
                     const fileHeader = document.createElement('div');
                     fileHeader.style.cssText = 'margin-top: 10px; padding: 5px; background: #e0e0e0; font-weight: bold; font-size: 12px;';
-                    fileHeader.textContent = `[${files.length} FILES IN THIS FOLDER]`;
+                    fileHeader.textContent = `[${files.length} FILES IN THIS FOLDER] [${lockedCount} LOCKED]`;
                     folderList.appendChild(fileHeader);
 
                     files.forEach(file => {
                         const fileItem = document.createElement('div');
                         fileItem.className = 'file-item';
-                        fileItem.textContent = `• ${file.name}`;
+                        
+                        const isLocked = file.copyRequiresWriterPermission;
+                        const lockIcon = isLocked ? '🔒' : '🔓';
+                        const lockClass = isLocked ? 'locked' : 'unlocked';
+                        
+                        fileItem.innerHTML = `
+                            <span class="file-name">• ${file.name}</span>
+                            <span class="lock-icon ${lockClass}" title="${isLocked ? 'Locked - Download disabled' : 'Unlocked - Download enabled'}">${lockIcon}</span>
+                        `;
                         folderList.appendChild(fileItem);
                     });
                 }
